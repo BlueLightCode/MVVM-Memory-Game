@@ -1,4 +1,4 @@
-package com.bluelightcode.mvvm_memory_game.screens.game
+package com.bluelightcode.mvvm_memory_game.screens.model
 
 data class GameBox(
     var color: Int,
