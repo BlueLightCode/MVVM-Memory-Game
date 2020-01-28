@@ -6,23 +6,49 @@ import androidx.lifecycle.ViewModel
 import com.bluelightcode.mvvm_memory_game.screens.model.GameBox
 
 class GameViewModel : ViewModel() {
-    private lateinit var _field : MutableLiveData<List<GameBox>>
-    public val field : LiveData<List<GameBox>>
+    private var _field: MutableLiveData<MutableList<GameBox>> = MutableLiveData()
+    public val field: LiveData<MutableList<GameBox>>
         get() = _field
 
-    private lateinit var _score : MutableLiveData<Int>
+    private lateinit var _score: MutableLiveData<Int>
     public val score: LiveData<Int>
         get() = _score
 
-    private lateinit var _message : MutableLiveData<String>
-    public val  message: LiveData<String>
+    private lateinit var _message: MutableLiveData<String>
+    public val message: LiveData<String>
         get() = _message
 
-    private lateinit var _guess : MutableLiveData<List<GameBox>>
-    public val guess : LiveData<List<GameBox>>
+    private lateinit var _guess: MutableLiveData<List<GameBox>>
+    public val guess: LiveData<List<GameBox>>
         get() = _guess
 
+    private lateinit var optionHex: MutableLiveData<List<String>>
+
+    private var totalBoxes: Int = 0
+
     init {
-        // Will put the color assignment code here
+        optionHex.value = listOf(
+            "#05c9de", "#cf7ce2", "#ca1e24", "#096951",
+            "#6a90ef", "#f64a1e", "#9f734c", "#4b6b91"
+        )
+
+        _score.value = 0
+
+        _message.value = "Match squares until you reach 40 points"
+
+        while (totalBoxes < 15) {
+            _field.value?.add(GameBox("#FFFFFF",false,false))
+
+            totalBoxes ++
+        }
+
+//        for (option in optionHex) {
+//
+//            var box1 = field.value?.random()
+//            var box2 = field.value?.random()
+//
+//            box1?.boxHex = option
+//            box2?.boxHex = option
+//        }
     }
 }

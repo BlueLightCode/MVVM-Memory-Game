@@ -1,7 +1,7 @@
 package com.bluelightcode.mvvm_memory_game.screens.model
 
 data class GameBox(
-    var color: Int,
+    var boxHex: String,
     var paired: Boolean,
-    var visiible: Boolean
+    var visible: Boolean
 )
