@@ -42,13 +42,7 @@ class ExampleUnitTest {
     var coloredBoxes: MutableList<GameBox> =
         mutableListOf(GameBox("#FFFFFF", paired = false, visible = false))
 
-//    var blankField : MutableLiveData<ArrayList<GameBox>> = MutableLiveData()
-
-
-//    var field: MutableLiveData<MutableList<GameBox>> = MutableLiveData()
-
-    @Test
-    fun initailize() {
+    init {
         val colorsList: List<String> = listOf(
             "#05c9de", "#cf7ce2", "#ca1e24", "#096951",
             "#6a90ef", "#f64a1e", "#9f734c", "#4b6b91"
@@ -63,7 +57,7 @@ class ExampleUnitTest {
                 listBoxes[0].boxHex = color
 
                 coloredBoxes.add(listBoxes[0])
-                listBoxes.removeAt(0)
+                listBoxes .removeAt(0)
 
                 x++
             }

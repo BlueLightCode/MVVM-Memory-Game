@@ -22,33 +22,65 @@ class GameViewModel : ViewModel() {
     public val guess: LiveData<List<GameBox>>
         get() = _guess
 
-    private lateinit var optionHex: MutableLiveData<List<String>>
 
-    private var totalBoxes: Int = 0
+    private var listBoxes: MutableList<GameBox> = mutableListOf(
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false),
+        GameBox("#FFFFFF", paired = false, visible = false)
+    )
+
+    private var coloredBoxes: MutableList<GameBox> =
+        mutableListOf(GameBox("#FFFFFF", paired = false, visible = false))
 
     init {
-        optionHex.value = listOf(
-            "#05c9de", "#cf7ce2", "#ca1e24", "#096951",
-            "#6a90ef", "#f64a1e", "#9f734c", "#4b6b91"
-        )
 
         _score.value = 0
 
         _message.value = "Match squares until you reach 40 points"
 
-        while (totalBoxes < 15) {
-            _field.value?.add(GameBox("#FFFFFF",false,false))
 
-            totalBoxes ++
+        val colorsList: List<String> = listOf(
+            "#05c9de", "#cf7ce2", "#ca1e24", "#096951",
+            "#6a90ef", "#f64a1e", "#9f734c", "#4b6b91"
+        )
+
+
+        for (color in colorsList) {// Assigns colors to two game boxes at a time.
+
+            var x: Int = 0
+
+            while (x < 2) {
+                /**
+                 * Sets the current color to the first box in listBoxes for two boxes
+                 * Once done, this loop moves the colored boxes to a separate list**/
+                listBoxes[0].boxHex = color
+
+                coloredBoxes.add(listBoxes[0])
+                listBoxes .removeAt(0)
+
+                x++
+            }
+
         }
 
-//        for (option in optionHex) {
-//
-//            var box1 = field.value?.random()
-//            var box2 = field.value?.random()
-//
-//            box1?.boxHex = option
-//            box2?.boxHex = option
-//        }
+        listBoxes.add(coloredBoxes[0])
+        coloredBoxes.removeAt(0)
+
+        coloredBoxes.shuffle()
+
+        _field.postValue(coloredBoxes)
     }
 }
