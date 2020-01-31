@@ -1,4 +1,4 @@
-package com.bluelightcode.mvvm_memory_game.screens.model
+package com.bluelightcode.mvvm_memory_game.model
 
 data class GameBox(
     var boxHex: String,

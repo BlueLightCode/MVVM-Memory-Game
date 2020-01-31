@@ -1,127 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#252728"
-    tools:context=".screens.game.GameFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Constraint_Layout"
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#252728"
+        tools:context=".screens.game.GameFragment">
 
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/Boxes_Grid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:padding="8dp"
-            app:columnCount="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:rowCount="4">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Constraint_Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/Box1_button"
-                style="@android:style/Widget.Button"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box2_button"
-                style="@android:style/Widget.Button"
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/Boxes_Grid"
                 android:layout_width="wrap_content"
-                android:layout_height="86dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:padding="8dp"
+                app:columnCount="4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:rowCount="4">
 
-            <Button
-                android:id="@+id/box3_button"
-                style="@android:style/Widget.Button"
+                <TextView
+                    android:id="@+id/box_Text1"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text2"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text3"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text4"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text5"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text6"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text7"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text8"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text9"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text10"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text11"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text12"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text13"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text14"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text15"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/box_Text16"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_margin="4dp"
+                    android:background="#FFFFFF" />
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <TextView
+                android:id="@+id/score_Text"
                 android:layout_width="wrap_content"
-                android:layout_height="86dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/score_string"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Boxes_Grid" />
 
-            <Button
-                android:id="@+id/box4_button"
-                style="@android:style/Widget.Button"
+            <TextView
+                android:id="@+id/message_Text"
                 android:layout_width="wrap_content"
-                android:layout_height="86dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:includeFontPadding="true"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/gameMessage_text"
+                android:textColor="#FFFFFF"
+                android:textSize="36sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/score_Text"
+                app:layout_constraintVertical_bias="0.0" />
 
-            <Button
-                android:id="@+id/box5_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
-                android:id="@+id/box6_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box7_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box8_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box9_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box10_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box11_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box12_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box13_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box14_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box15_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-
-            <Button
-                android:id="@+id/box16_button"
-                style="@android:style/Widget.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="86dp" />
-        </androidx.gridlayout.widget.GridLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</FrameLayout>
+    </FrameLayout>
+</layout>

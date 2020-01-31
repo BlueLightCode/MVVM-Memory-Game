@@ -1,6 +1,6 @@
 package com.bluelightcode.mvvm_memory_game
 
-import com.bluelightcode.mvvm_memory_game.screens.model.GameBox
+import com.bluelightcode.mvvm_memory_game.model.GameBox
 import org.junit.Test
 
 /**
@@ -21,26 +21,96 @@ class ExampleUnitTest {
      * out when trying to add/remove something from a null List
      * **/
     var listBoxes: MutableList<GameBox> = mutableListOf(
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false)
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        )
     )
 
     var coloredBoxes: MutableList<GameBox> =
-        mutableListOf(GameBox("#FFFFFF", paired = false, visible = false))
+        mutableListOf(
+            GameBox(
+                "#FFFFFF",
+                paired = false,
+                visible = false
+            )
+        )
 
     init {
         val colorsList: List<String> = listOf(

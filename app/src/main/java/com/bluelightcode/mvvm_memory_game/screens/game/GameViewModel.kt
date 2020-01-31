@@ -3,7 +3,7 @@ package com.bluelightcode.mvvm_memory_game.screens.game
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bluelightcode.mvvm_memory_game.screens.model.GameBox
+import com.bluelightcode.mvvm_memory_game.model.GameBox
 
 class GameViewModel : ViewModel() {
     private var _field: MutableLiveData<MutableList<GameBox>> = MutableLiveData()
@@ -22,28 +22,97 @@ class GameViewModel : ViewModel() {
     public val guess: LiveData<List<GameBox>>
         get() = _guess
 
-
     private var listBoxes: MutableList<GameBox> = mutableListOf(
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false),
-        GameBox("#FFFFFF", paired = false, visible = false)
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        ),
+        GameBox(
+            "#FFFFFF",
+            paired = false,
+            visible = false
+        )
     )
 
     private var coloredBoxes: MutableList<GameBox> =
-        mutableListOf(GameBox("#FFFFFF", paired = false, visible = false))
+        mutableListOf(
+            GameBox(
+                "#FFFFFF",
+                paired = false,
+                visible = false
+            )
+        )
 
     init {
 
@@ -69,7 +138,7 @@ class GameViewModel : ViewModel() {
                 listBoxes[0].boxHex = color
 
                 coloredBoxes.add(listBoxes[0])
-                listBoxes .removeAt(0)
+                listBoxes.removeAt(0)
 
                 x++
             }
@@ -77,6 +146,7 @@ class GameViewModel : ViewModel() {
         }
 
         listBoxes.add(coloredBoxes[0])
+
         coloredBoxes.removeAt(0)
 
         coloredBoxes.shuffle()
