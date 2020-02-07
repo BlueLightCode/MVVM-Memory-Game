@@ -6,6 +6,8 @@ buildscript {
     ext {
         gradleVersion = '3.3.0'
         dataBindingCompilerVersion = gradleVersion
+
+
     }
 
     repositories {

@@ -6,22 +6,28 @@ import androidx.lifecycle.ViewModel
 import com.bluelightcode.mvvm_memory_game.model.GameBox
 
 class GameViewModel : ViewModel() {
+
+    /** Variable for referencing the GameFragment's GridLayout of Boxes **/
     private var _field: MutableLiveData<MutableList<GameBox>> = MutableLiveData()
     public val field: LiveData<MutableList<GameBox>>
         get() = _field
 
+    /** Variable used for tracking the score **/
     private lateinit var _score: MutableLiveData<Int>
     public val score: LiveData<Int>
         get() = _score
 
+    /** Variable used for changing messageText **/
     private lateinit var _message: MutableLiveData<String>
     public val message: LiveData<String>
         get() = _message
 
+    /** Variable used for tracking guesses; need to use an array to limit values **/
     private lateinit var _guess: MutableLiveData<List<GameBox>>
     public val guess: LiveData<List<GameBox>>
         get() = _guess
 
+    /** Variable used for tracking the GameBox objects before they been assigned colors **/
     private var listBoxes: MutableList<GameBox> = mutableListOf(
         GameBox(
             "#FFFFFF",
@@ -105,6 +111,7 @@ class GameViewModel : ViewModel() {
         )
     )
 
+    /** Variable used for tracking the GameBox objects after they been assigned colors **/
     private var coloredBoxes: MutableList<GameBox> =
         mutableListOf(
             GameBox(
@@ -120,6 +127,12 @@ class GameViewModel : ViewModel() {
 
         _message.value = "Match squares until you reach 40 points"
 
+        randomizeColors()
+    }
+
+    /** randomizeColors() is used to randomize the colors of the boxes **/
+    private fun randomizeColors() {
+
 
         val colorsList: List<String> = listOf(
             "#05c9de", "#cf7ce2", "#ca1e24", "#096951",
@@ -127,7 +140,7 @@ class GameViewModel : ViewModel() {
         )
 
 
-        for (color in colorsList) {// Assigns colors to two game boxes at a time.
+        for (color in colorsList) {
 
             var x: Int = 0
 

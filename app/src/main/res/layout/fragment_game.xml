@@ -35,113 +35,113 @@
 
                 <TextView
                     android:id="@+id/box_Text1"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text2"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text3"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text4"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text5"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text6"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text7"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text8"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text9"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text10"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text11"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text12"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text13"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text14"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text15"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/box_Text16"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
+                    android:layout_width="@dimen/boxSize"
+                    android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
                     android:background="#FFFFFF" />
 
@@ -151,7 +151,7 @@
                 android:id="@+id/score_Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/score_string"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginRight="32dp"
                 android:includeFontPadding="true"
@@ -173,7 +173,7 @@
                 android:paddingRight="20dp"
                 android:text="@string/gameMessage_text"
                 android:textColor="#FFFFFF"
-                android:textSize="36sp"
+                android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

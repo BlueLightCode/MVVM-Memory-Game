@@ -31,6 +31,8 @@ android {
 
 dependencies {
     def fragment_version = "1.2.0"
+    def nav_version = "2.3.0-alpha01"
+
 
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -43,5 +45,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
 }
