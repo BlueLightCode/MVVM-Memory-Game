@@ -13,23 +13,22 @@ import kotlin.concurrent.timerTask
 class GameViewModel : ViewModel() {
 
     /** Variable used for tracking the score **/
-    private lateinit var _score: MutableLiveData<Int>
+    private val _score = MutableLiveData<Int>()
     public val score: LiveData<Int>
         get() = _score
 
     /** Variable used for changing messageText **/
-    private lateinit var _message: MutableLiveData<String>
+    val _message = MutableLiveData<String>()
     public val message: LiveData<String>
         get() = _message
 
     /** Variable used for tracking what been guessed **/
-    private var _guess = Array<GameBox?>(2) { null }
+    private val _guess = MutableLiveData<Array<GameBox?>>()
+    public val guess: LiveData<Array<GameBox?>>
+        get() = _guess
 
-//    public val guess: LiveData<GameBox?>
-//        get() = _guess
-
-    /** Variable used for tracking the GameBox objects **/
-    private var boxGrid: MutableList<GameBox> = mutableListOf(
+    /** Variable for holding the shufflable GameBox objects **/
+    private val boxColor = mutableListOf(
         GameBox(
             boxHex = Color.parseColor("#05c9de"),
             paired = false,
@@ -112,20 +111,24 @@ class GameViewModel : ViewModel() {
         )
     )
 
-//    /** Serves as a reference variable for the DataBinding Map **/
-//    private lateinit var _gridBinding: MutableLiveData<HashMap<GameBox, TextView>>
-//
-//    public val gridBinding: LiveData<HashMap<GameBox, TextView>>
-//        get() = _gridBinding
+    /** Variable used for tracking the GameBox objects **/
+    private val _boxGrid = MutableLiveData<MutableList<GameBox>>()
+    public val boxGrid : LiveData<MutableList<GameBox>>
+        get() = _boxGrid
 
 
     init {  // Resets score, and shuffle squares
+
+        boxColor.shuffle()
+
+        _boxGrid.value = boxColor
+
+        _guess.value = Array(2) { null }
 
         _score.value = 0
 
         _message.value = "Match 2 boxes to get 5 points.  Once you get 40 points, you win!"
 
-        boxGrid.shuffle()
     }
 
     private fun showColor(selectedBox: GameBox, selectedView: TextView?) {
@@ -138,58 +141,58 @@ class GameViewModel : ViewModel() {
     }
 
 
-    private fun takeAGuess(selectedBox: GameBox, selectedView: TextView) {
-
-        if (selectedBox.pairedView == null) {
-            /** Pairs the GameBox with a view, so the view can be referenced by object **/
-            selectedBox.pairedView = selectedView
-        }
-
-        if (_guess.isEmpty()) {
-            /** Adds the first guess to the array, and show it's color **/
-            _guess[0] = selectedBox
-
-            selectedView.isClickable = false
-
-            showColor(selectedBox, selectedView)
-
-        } else {
-            /** Adds second guess to array, then checks if they match **/
-            _guess[1] = selectedBox
-
-            selectedView.isClickable = false
-
-            showColor(selectedBox, selectedView)
-
-            checkValidity()
-        }
-    }
-
-    private fun checkValidity() {
-        if (_guess[0]!!.boxHex != _guess[1]!!.boxHex) {
-            /** Tells player their guess was incorrect, and hide colors after a few moments **/
-
-            _message.value = "Too bad, those don't match up."
-
-            Timer().schedule(timerTask {
-                hideColor(_guess[0]!!.pairedView)
-                hideColor(_guess[1]!!.pairedView)
-
-                _guess[0]!!.pairedView!!.isClickable = true
-                _guess[1]!!.pairedView!!.isClickable = true
-            }, 2000)
-
-
-        } else {
-            /** Tells player their guess was correct, and increases score **/
-
-            _message.value = "Good job! you got a match!"
-            _guess[0]!!.paired = true
-            _guess[1]!!.paired = true
-
-            _score.value!!.plus(5)
-        }
-
-        _guess = emptyArray()  //Empties array for new guess attempt
-    }
+//    private fun takeAGuess(selectedBox: GameBox, selectedView: TextView) {
+//
+//        if (selectedBox.pairedView == null) {
+//            /** Pairs the GameBox with a view, so the view can be referenced by object **/
+//            selectedBox.pairedView = selectedView
+//        }
+//
+//        if (_guess.isEmpty()) {
+//            /** Adds the first guess to the array, and show it's color **/
+//            _guess[0] = selectedBox
+//
+//            selectedView.isClickable = false
+//
+//            showColor(selectedBox, selectedView)
+//
+//        } else {
+//            /** Adds second guess to array, then checks if they match **/
+//            _guess[1] = selectedBox
+//
+//            selectedView.isClickable = false
+//
+//            showColor(selectedBox, selectedView)
+//
+//            checkValidity()
+//        }
+//    }
+//
+//    private fun checkValidity() {
+//        if (_guess[0]!!.boxHex != _guess[1]!!.boxHex) {
+//            /** Tells player their guess was incorrect, and hide colors after a few moments **/
+//
+//            _message.value = R.string.incorrectMatch_text.toString()
+//
+//            Timer().schedule(timerTask {
+//                hideColor(_guess[0]!!.pairedView)
+//                hideColor(_guess[1]!!.pairedView)
+//
+//                _guess[0]!!.pairedView!!.isClickable = true
+//                _guess[1]!!.pairedView!!.isClickable = true
+//            }, 2000)
+//
+//
+//        } else {
+//            /** Tells player their guess was correct, and increases score **/
+//
+//            _message.value = R.string.correctMatch_text.toString()
+//            _guess[0]!!.paired = true
+//            _guess[1]!!.paired = true
+//
+//            _score.value = score.value!!.plus(5)
+//        }
+//
+//        _guess.value = emptyArray()  //Empties array for new guess attempt
+//    }
 }
