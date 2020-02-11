@@ -6,7 +6,7 @@
     app:startDestination="@id/gameFragment">
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.bluelightcode.mvvm_memory_game.GameFragment"
+        android:name="com.bluelightcode.mvvm_memory_game.screens.game.GameFragment"
         android:label="GameFragment"
         tools:layout="@layout/fragment_game"/>
 </navigation>

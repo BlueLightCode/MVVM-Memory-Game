@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="gameViewModel"
+            type="com.bluelightcode.mvvm_memory_game.screens.game.GameViewModel" />
     </data>
 
     <FrameLayout
@@ -20,7 +22,7 @@
             android:layout_height="match_parent">
 
             <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/Boxes_Grid"
+                android:id="@+id/box_Grid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -38,7 +40,8 @@
                     android:layout_width="@dimen/boxSize"
                     android:layout_height="@dimen/boxSize"
                     android:layout_margin="4dp"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    />
 
                 <TextView
                     android:id="@+id/box_Text2"
@@ -157,7 +160,7 @@
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Boxes_Grid" />
+                app:layout_constraintTop_toBottomOf="@+id/box_Grid" />
 
             <TextView
                 android:id="@+id/message_Text"
@@ -171,7 +174,7 @@
                 android:includeFontPadding="true"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="@string/gameMessage_text"
+                android:text="@string/gameStart_text"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"

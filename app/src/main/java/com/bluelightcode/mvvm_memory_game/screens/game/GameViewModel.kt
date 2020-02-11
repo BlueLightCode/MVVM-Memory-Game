@@ -1,16 +1,16 @@
 package com.bluelightcode.mvvm_memory_game.screens.game
 
+import android.graphics.Color
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bluelightcode.mvvm_memory_game.R
 import com.bluelightcode.mvvm_memory_game.model.GameBox
+import java.util.*
+import kotlin.concurrent.timerTask
 
 class GameViewModel : ViewModel() {
-
-    /** Variable for referencing the GameFragment's GridLayout of Boxes **/
-    private var _field: MutableLiveData<MutableList<GameBox>> = MutableLiveData()
-    public val field: LiveData<MutableList<GameBox>>
-        get() = _field
 
     /** Variable used for tracking the score **/
     private lateinit var _score: MutableLiveData<Int>
@@ -22,148 +22,174 @@ class GameViewModel : ViewModel() {
     public val message: LiveData<String>
         get() = _message
 
-    /** Variable used for tracking guesses; need to use an array to limit values **/
-    private lateinit var _guess: MutableLiveData<List<GameBox>>
-    public val guess: LiveData<List<GameBox>>
-        get() = _guess
+    /** Variable used for tracking what been guessed **/
+    private var _guess = Array<GameBox?>(2) { null }
 
-    /** Variable used for tracking the GameBox objects before they been assigned colors **/
-    private var listBoxes: MutableList<GameBox> = mutableListOf(
+//    public val guess: LiveData<GameBox?>
+//        get() = _guess
+
+    /** Variable used for tracking the GameBox objects **/
+    private var boxGrid: MutableList<GameBox> = mutableListOf(
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#05c9de"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#05c9de"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#cf7ce2"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#cf7ce2"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#ca1e24"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#ca1e24"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#096951"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#096951"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#6a90ef"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#6a90ef"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#f64a1e"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#f64a1e"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#9f734c"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#9f734c"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#4b6b91"),
             paired = false,
-            visible = false
+            pairedView = null
         ),
         GameBox(
-            "#FFFFFF",
+            boxHex = Color.parseColor("#4b6b91"),
             paired = false,
-            visible = false
+            pairedView = null
         )
     )
 
-    /** Variable used for tracking the GameBox objects after they been assigned colors **/
-    private var coloredBoxes: MutableList<GameBox> =
-        mutableListOf(
-            GameBox(
-                "#FFFFFF",
-                paired = false,
-                visible = false
-            )
-        )
+//    /** Serves as a reference variable for the DataBinding Map **/
+//    private lateinit var _gridBinding: MutableLiveData<HashMap<GameBox, TextView>>
+//
+//    public val gridBinding: LiveData<HashMap<GameBox, TextView>>
+//        get() = _gridBinding
 
-    init {
+
+    init {  // Resets score, and shuffle squares
 
         _score.value = 0
 
-        _message.value = "Match squares until you reach 40 points"
+        _message.value = "Match 2 boxes to get 5 points.  Once you get 40 points, you win!"
 
-        randomizeColors()
+        boxGrid.shuffle()
     }
 
-    /** randomizeColors() is used to randomize the colors of the boxes **/
-    private fun randomizeColors() {
+    private fun showColor(selectedBox: GameBox, selectedView: TextView?) {
+        selectedView!!.setBackgroundResource(selectedBox.boxHex)
+    }
 
 
-        val colorsList: List<String> = listOf(
-            "#05c9de", "#cf7ce2", "#ca1e24", "#096951",
-            "#6a90ef", "#f64a1e", "#9f734c", "#4b6b91"
-        )
+    private fun hideColor(selectedView: TextView?) {
+        selectedView!!.setBackgroundResource(R.color.white)
+    }
 
 
-        for (color in colorsList) {
+    private fun takeAGuess(selectedBox: GameBox, selectedView: TextView) {
 
-            var x: Int = 0
-
-            while (x < 2) {
-                /**
-                 * Sets the current color to the first box in listBoxes for two boxes
-                 * Once done, this loop moves the colored boxes to a separate list**/
-                listBoxes[0].boxHex = color
-
-                coloredBoxes.add(listBoxes[0])
-                listBoxes.removeAt(0)
-
-                x++
-            }
-
+        if (selectedBox.pairedView == null) {
+            /** Pairs the GameBox with a view, so the view can be referenced by object **/
+            selectedBox.pairedView = selectedView
         }
 
-        listBoxes.add(coloredBoxes[0])
+        if (_guess.isEmpty()) {
+            /** Adds the first guess to the array, and show it's color **/
+            _guess[0] = selectedBox
 
-        coloredBoxes.removeAt(0)
+            selectedView.isClickable = false
 
-        coloredBoxes.shuffle()
+            showColor(selectedBox, selectedView)
 
-        _field.postValue(coloredBoxes)
+        } else {
+            /** Adds second guess to array, then checks if they match **/
+            _guess[1] = selectedBox
+
+            selectedView.isClickable = false
+
+            showColor(selectedBox, selectedView)
+
+            checkValidity()
+        }
+    }
+
+    private fun checkValidity() {
+        if (_guess[0]!!.boxHex != _guess[1]!!.boxHex) {
+            /** Tells player their guess was incorrect, and hide colors after a few moments **/
+
+            _message.value = "Too bad, those don't match up."
+
+            Timer().schedule(timerTask {
+                hideColor(_guess[0]!!.pairedView)
+                hideColor(_guess[1]!!.pairedView)
+
+                _guess[0]!!.pairedView!!.isClickable = true
+                _guess[1]!!.pairedView!!.isClickable = true
+            }, 2000)
+
+
+        } else {
+            /** Tells player their guess was correct, and increases score **/
+
+            _message.value = "Good job! you got a match!"
+            _guess[0]!!.paired = true
+            _guess[1]!!.paired = true
+
+            _score.value!!.plus(5)
+        }
+
+        _guess = emptyArray()  //Empties array for new guess attempt
     }
 }
